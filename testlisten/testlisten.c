@@ -47,7 +47,6 @@ int main( int argc, char* argv[] )
 	int cnt = 1;
 	while(!stop)
 	{
-	printf("sleep %d-th.",cnt++);
 	sleep(1);
 	}
 	close(sock);

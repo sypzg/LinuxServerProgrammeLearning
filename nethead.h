@@ -10,6 +10,7 @@
 #include<errno.h>
 #include<string.h>
 #include<stdlib.h>
+#include<netdb.h>
 extern int IPv4Sock_Listening(int argc, char* argv[],int pdic_para);
 
 #endif

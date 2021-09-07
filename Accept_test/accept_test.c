@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
         printf("errno is:%d\n",errno);
     }else{
         char remote[INET_ADDRSTRLEN];
-        printf("connected with ip:%s and port:%d\n", inet_ntop(AF_INET，&client.sin_addr,remote,INET_ADDRSTRLEN),ntohs(client.sin_port));
+        printf("connected with ip:%s and port:%d\n", inet_ntop(AF_INET, &client.sin_addr,remote,INET_ADDRSTRLEN),ntohs(client.sin_port));
         close(connfd);
     }
     close(sock);
