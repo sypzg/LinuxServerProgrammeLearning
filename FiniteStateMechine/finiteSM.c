@@ -203,15 +203,19 @@ int main( int argc, char* argv[] )
     assert( listenfd >= 0 );
     int ret = bind( listenfd, (struct sockaddr*)&address, sizeof(address) );
     assert( ret != -1 );
+    ret = listen( listenfd, 5 );
+    assert(ret != -1);
     struct sockaddr_in client_address;
     socklen_t client_addrlength = sizeof( client_address );
     int fd = accept( listenfd, (struct sockaddr*)&client_address, &client_addrlength );
     if( fd < 0 )
     {
-        printf("errno is: %s\n", gai_strerror(errno) );
+        printf("errno is:%d %s\n", errno, strerror(errno) );
     }
     else
     {
+        char remote[INET_ADDRSTRLEN];
+        printf("ip:%s host:%d",inet_ntop(AF_INET, &client_address.sin_addr,remote,INET_ADDRSTRLEN),ntohs(client_address.sin_port));
         char buffer[ BUFFER_SIZE ];//读缓冲区
         memset( buffer, '\0', BUFFER_SIZE );
         int data_read = 0;
